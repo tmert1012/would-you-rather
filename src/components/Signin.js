@@ -1,7 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {setAuthedUser} from "../actions/authedUser";
 
 class Signin extends Component {
+    state = {
+        user: "",
+    }
+
+    handleChange = (e) => {
+        const user = e.target.value
+
+        this.setState(() => ({
+            user
+        }))
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        this.props.dispatch(setAuthedUser(this.state.user))
+
+    }
 
     render() {
         const { users } = this.props
@@ -12,9 +31,19 @@ class Signin extends Component {
                 <div className='instructions'>Please sign in to continue</div>
                 <div className='logo'><img src="/public/react-redux.png" alt='react-redux logos'/></div>
                 <div className='title'>Sign In</div>
-                <select className='user-select'>
-                    {Object.keys(users).map( (id) => (<option key={id}>{users[id].name}</option>) )}
-                </select>
+
+                <form onSubmit={this.handleSubmit}>
+                    <select
+                        className='user-select'
+                        value={this.state.user}
+                        onChange={this.handleChange}>
+                            <option key="" value="">Select User...</option>
+                            {Object.keys(users).map( (id) => (<option key={id} value={id}>{users[id].name}</option>) )}
+                    </select>
+
+                    <button disabled={this.state.user === ""} className="btn" type="submit">Login</button>
+                </form>
+
             </div>
         )
     }
