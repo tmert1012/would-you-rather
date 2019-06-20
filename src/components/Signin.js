@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
+import { Redirect } from 'react-router-dom'
 
 class Signin extends Component {
     state = {
         user: "",
+        toHome: false,
     }
 
     handleChange = (e) => {
@@ -20,10 +22,17 @@ class Signin extends Component {
 
         this.props.dispatch(setAuthedUser(this.state.user))
 
+        this.setState(() => ({
+            toHome: true
+        }))
     }
 
     render() {
         const { users } = this.props
+
+        if (this.state.toHome === true) {
+            return <Redirect to='/home' />
+        }
 
         return (
             <div className='signin'>
