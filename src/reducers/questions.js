@@ -1,6 +1,6 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION } from '../actions/questions'
 
-export default function tweets(state = {}, action) {
+export default function questions(state = {}, action) {
 
   switch (action.type) {
     case RECEIVE_QUESTIONS:
@@ -14,7 +14,7 @@ export default function tweets(state = {}, action) {
 
       return {
         ...state,
-        [action.question.id]: action.question,
+        [action.question.id]: question,
       }
 
     default:

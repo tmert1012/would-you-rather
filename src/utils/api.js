@@ -14,6 +14,12 @@ export function getInitialData () {
     }))
 }
 
+export function getUsers() {
+    return _getUsers().then((users) => ({
+        users,
+    }))
+}
+
 export function saveQuestion (question) {
     return _saveQuestion(question)
 }
