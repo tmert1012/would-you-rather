@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 import Home from "./Home";
 import LeaderBoard from "./LeaderBoard";
 import NewQuestion from "./NewQuestion";
-import {handleInitialUsers} from "../actions/shared";
+import {handleInitialUsers} from "../actions/users";
 
 class App extends Component {
 

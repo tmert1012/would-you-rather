@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
 import { Redirect } from 'react-router-dom'
+import { CardColumns, Card, Button } from 'react-bootstrap'
 
 class Signin extends Component {
     state = {
@@ -35,25 +36,26 @@ class Signin extends Component {
         }
 
         return (
-            <div className='signin'>
-                <div className='welcome-message'>Welcome to the World You Rather App</div>
-                <div className='instructions'>Please sign in to continue</div>
-                <div className='logo'><img src="/public/react-redux.png" alt='react-redux logos'/></div>
-                <div className='title'>Sign In</div>
-
-                <form onSubmit={this.handleSubmit}>
-                    <select
-                        className='user-select'
-                        value={this.state.user}
-                        onChange={this.handleChange}>
-                            <option key="" value="">Select User...</option>
-                            {Object.keys(users).map( (id) => (<option key={id} value={id}>{users[id].name}</option>) )}
-                    </select>
-
-                    <button disabled={this.state.user === ""} className="btn" type="submit">Login</button>
-                </form>
-
-            </div>
+            <Card style={{ width: '18rem' }} className="text-center mx-auto">
+                <Card.Img variant="top" src="react-redux.png" />
+                <Card.Body>
+                    <Card.Title>Would You Rather?</Card.Title>
+                    <Card.Text>
+                        Please sign in to continue
+                    </Card.Text>
+                    <form onSubmit={this.handleSubmit}>
+                        <select
+                            className='user-select'
+                            value={this.state.user}
+                            onChange={this.handleChange}>
+                                <option key="" value="">Select User...</option>
+                                {Object.keys(users).map( (id) => (<option key={id} value={id}>{users[id].name}</option>) )}
+                        </select>
+                        <br />
+                        <Button variant="primary" disabled={this.state.user === ""} className="btn" type="submit">Login</Button>
+                    </form>
+                </Card.Body>
+            </Card>
         )
     }
 }

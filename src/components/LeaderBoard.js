@@ -23,7 +23,7 @@ class LeaderBoard extends Component {
                         <Card.Body>
                             <Card.Title>{user.name}</Card.Title>
                             <Card.Body>
-                                <img src={user.avatarURL} />
+                                <img alt="avatar" src={user.avatarURL} />
                                 <div>Answered Questions: {user.answeredCnt}</div>
                                 <div>Created Questions: {user.questionCnt}</div>
                                 <div>
