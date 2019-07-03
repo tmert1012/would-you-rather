@@ -8,6 +8,7 @@ import Home from "./Home";
 import LeaderBoard from "./LeaderBoard";
 import NewQuestion from "./NewQuestion";
 import {handleInitialUsers} from "../actions/users";
+import Question from "./Question";
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
                                 <Route path='/home' exact component={Home} />
                                 <Route path='/new' exact component={NewQuestion} />
                                 <Route path='/leaderboard' exact component={LeaderBoard} />
+                                <Route path="/questions/:id" component={Question}/>
                             </div>
                         }
                     </div>

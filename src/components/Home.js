@@ -17,14 +17,11 @@ class Home extends Component {
         const answered = []
 
         Object.keys(questions).forEach( (id) => {
-            if (questions[id].author === authedUser)
+            if (questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser))
                 answered.push(questions[id])
             else
                 unanswered.push(questions[id])
         })
-
-        console.log("unanswered: ", unanswered)
-        console.log("answered: ", answered)
 
         return (
             <Tabs defaultActiveKey="unanswered">

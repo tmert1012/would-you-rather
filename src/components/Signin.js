@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
 import { Redirect } from 'react-router-dom'
-import { CardColumns, Card, Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 class Signin extends Component {
     state = {
