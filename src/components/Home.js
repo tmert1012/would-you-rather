@@ -26,10 +26,10 @@ class Home extends Component {
         return (
             <Tabs defaultActiveKey="unanswered">
                 <Tab eventKey="unanswered" title="Unanswered Questions">
-                    <QuestionList questions={unanswered} />
+                    <QuestionList questions={unanswered} answered={false} />
                 </Tab>
                 <Tab eventKey="answered" title="Answered Questions">
-                    <QuestionList questions={answered} />
+                    <QuestionList questions={answered} answered={true} />
                 </Tab>
             </Tabs>
         )

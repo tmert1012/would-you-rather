@@ -22,7 +22,7 @@ class App extends Component {
                 <Fragment>
                     <LoadingBar />
                     <div className='container'>
-                        {this.props.loading === true
+                        { this.props.loading === true
                             ? null
                             :
                             <div>

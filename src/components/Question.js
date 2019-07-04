@@ -1,52 +1,31 @@
 import React, { Component } from 'react'
-import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
+import AnsweredQuestion from "./AnsweredQuestion"
+import UnansweredQuestion from "./UnansweredQuestion"
 
 class Question extends Component {
 
     render() {
-        const { id, users, authedUser, questions } = this.props
-
-        console.log(id)
-
+        const { id, authedUser, questions } = this.props
         const question = questions[id]
-        const user = users[question.author]
 
         return (
-            <Card key={id} bg="light" style={{ width: '18rem' }}>
-                <Card.Header as="h5">{user.name} asks:</Card.Header>
-                <Card.Body>
-                    <img alt="avatar" src={user.avatarURL} />
-                    <Card.Title>Would you rather...</Card.Title>
-                    <Card.Text>
-                        <div key="default-radio" className="mb-3">
-                            <Form.Check
-                                type="radio"
-                                id="default-radio"
-                                label={question.optionOne.text}
-                            />
-
-                            <Form.Check
-                                type="radio"
-                                label={question.optionTwo.text}
-                                id="default-radio"
-                            />
-                        </div>
-                    </Card.Text>
-                    <Button variant="primary">Submit</Button>
-                </Card.Body>
-            </Card>
+            <div>
+                { (question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+                    ? <AnsweredQuestion id={id} />
+                    : <UnansweredQuestion id={id} />
+                }
+            </div>
         )
     }
 
 }
 
-function mapStateToProps({ users, authedUser, questions }, props) {
-    const { id } = props.match.params.id
+function mapStateToProps({ authedUser, questions }, props) {
+    const { id } = props.match.params
 
     return {
         id,
-        users,
         authedUser,
         questions
     }

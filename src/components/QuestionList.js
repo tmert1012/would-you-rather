@@ -8,7 +8,11 @@ class QuestionList extends Component {
 
     handleClick = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/questions/${id}`)
+
+        if (this.props.answered)
+            this.props.history.push(`/questions/${id}`)
+        else
+            this.props.history.push(`/questions/${id}`)
     }
 
     render() {
