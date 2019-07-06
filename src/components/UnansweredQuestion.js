@@ -1,38 +1,75 @@
 import React, { Component } from 'react'
 import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
+import { handleAnswerQuestion } from "../actions/questions";
+import { Redirect } from 'react-router-dom'
 
 class UnansweredQuestion extends Component {
+    state = {
+        answer: 'optionOne',
+        toHome: false,
+    }
+
+    handleChange = (e) => {
+        const answer = e.target.value
+
+        this.setState(() => ({
+            answer
+        }))
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        const { answer } = this.state
+        const { authedUser, id } = this.props
+
+        this.props.dispatch(handleAnswerQuestion({ authedUser, qid: id, answer }))
+
+        this.setState(() => ({
+            toHome: true
+        }))
+    }
 
     render() {
-        const { id, users, authedUser, questions } = this.props
 
+        if (this.state.toHome === true) {
+            return <Redirect to='/home' />
+        }
+
+        const { id, users, questions } = this.props
         const question = questions[id]
         const user = users[question.author]
 
         return (
-            <Card key={id} bg="light" style={{ width: '18rem' }}>
-                <Card.Header as="h5">{user.name} asks:</Card.Header>
-                <Card.Body>
-                    <img alt="avatar" src={`../${user.avatarURL}`} />
-                    <Card.Title>Would you rather...</Card.Title>
-
-                        <div key="default-radio" className="mb-3">
+            <Form onSubmit={this.handleSubmit}>
+                <Card key={id} bg="light" style={{ width: '18rem' }}>
+                    <Card.Header as="h5">{user.name} asks:</Card.Header>
+                    <Card.Body>
+                        <img alt="avatar" src={`../${user.avatarURL}`} />
+                        <Card.Title>Would you rather...</Card.Title>
                             <Form.Check
                                 type="radio"
-                                id="default-radio"
+                                name="question-radio"
+                                id="question-radio1"
                                 label={question.optionOne.text}
+                                onChange={this.handleChange}
+                                checked={this.state.answer === "optionOne" ? "checked" : ""}
+                                value="optionOne"
                             />
-
                             <Form.Check
                                 type="radio"
                                 label={question.optionTwo.text}
-                                id="default-radio"
+                                id="question-radio2"
+                                name="question-radio"
+                                onChange={this.handleChange}
+                                checked={this.state.answer === "optionTwo" ? "checked" : ""}
+                                value="optionTwo"
                             />
-                        </div>
-                    <Button variant="primary">Submit</Button>
-                </Card.Body>
-            </Card>
+                        <Button variant="primary" type="submit">Submit</Button>
+                    </Card.Body>
+                </Card>
+            </Form>
         )
     }
 
