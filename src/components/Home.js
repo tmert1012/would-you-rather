@@ -10,6 +10,15 @@ class Home extends Component {
         this.props.dispatch(handleInitialQuestions())
     }
 
+    compare(a,b) {
+        let comparison = 0
+        if (a.timestamp > b.timestamp)
+            comparison = 1
+        else if (a.timestamp < b.timestamp)
+            comparison = -1
+        return comparison
+    }
+
     render() {
         const { authedUser, questions } = this.props
 
@@ -26,10 +35,10 @@ class Home extends Component {
         return (
             <Tabs defaultActiveKey="unanswered">
                 <Tab eventKey="unanswered" title="Unanswered Questions">
-                    <QuestionList questions={unanswered} answered={false} />
+                    <QuestionList questions={unanswered.sort(this.compare)} answered={false} />
                 </Tab>
                 <Tab eventKey="answered" title="Answered Questions">
-                    <QuestionList questions={answered} answered={true} />
+                    <QuestionList questions={answered.sort(this.compare)} answered={true} />
                 </Tab>
             </Tabs>
         )

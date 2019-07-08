@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import Signin from './Signin'
@@ -9,6 +9,7 @@ import LeaderBoard from "./LeaderBoard";
 import NewQuestion from "./NewQuestion";
 import {handleInitialUsers} from "../actions/users";
 import Question from "./Question";
+import NotFound from "./NotFound";
 
 class App extends Component {
 
@@ -27,11 +28,15 @@ class App extends Component {
                             :
                             <div>
                                 {this.props.authedUser === null ? null : <NavBar />}
-                                <Route path='/' exact component={Signin} />
-                                <Route path='/home' exact component={Home} />
-                                <Route path='/new' exact component={NewQuestion} />
-                                <Route path='/leaderboard' exact component={LeaderBoard} />
-                                <Route path="/questions/:id" component={Question}/>
+                                <Switch>
+                                    <Route path='/' exact component={Signin} />
+                                    <Route path='/home' exact component={Home} />
+                                    <Route path='/new' exact component={NewQuestion} />
+                                    <Route path='/leaderboard' exact component={LeaderBoard} />
+                                    <Route path="/questions/:id" component={Question}/>
+                                    <Route path="/not-found" component={NotFound}/>
+                                    <Route component={NotFound}/>
+                                </Switch>
                             </div>
                         }
                     </div>

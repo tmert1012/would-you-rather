@@ -28,6 +28,7 @@ class AnsweredQuestion extends Component {
                             {question.optionOne.votes.includes(authedUser) && <Badge variant="success">Your Vote</Badge>}
                         </Card.Body>
                         <ProgressBar now={this.getWholePercent(question.optionOne.votes.length, totalVotes)} label={`${this.getWholePercent(question.optionOne.votes.length, totalVotes)}%`} />
+                        {`${question.optionOne.votes.length} of ${totalVotes} votes`}
                     </Card>
 
                     <Card>
@@ -36,6 +37,7 @@ class AnsweredQuestion extends Component {
                             {question.optionTwo.votes.includes(authedUser) && <Badge variant="success">Your Vote</Badge>}
                         </Card.Body>
                         <ProgressBar now={this.getWholePercent(question.optionTwo.votes.length, totalVotes)} label={`${this.getWholePercent(question.optionTwo.votes.length, totalVotes)}%`} />
+                        {`${question.optionTwo.votes.length} of ${totalVotes} votes`}
                     </Card>
 
                 </Card.Body>

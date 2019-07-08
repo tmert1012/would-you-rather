@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AnsweredQuestion from "./AnsweredQuestion"
 import UnansweredQuestion from "./UnansweredQuestion"
+import { Redirect } from 'react-router-dom'
 
 class Question extends Component {
 
     render() {
         const { id, authedUser, questions } = this.props
+
+        if (!questions[id]) {
+            return <Redirect to={{
+                pathname: '/not-found',
+                state: { referrer: this.props.location.pathname }
+            }} />
+        }
+
         const question = questions[id]
 
         return (

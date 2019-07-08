@@ -19,7 +19,7 @@ export function handleAddQuestion (optionOneText, optionTwoText) {
     const question = {
       optionOneText,
       optionTwoText,
-      author: authedUser.id,
+      author: authedUser,
     }
 
     dispatch(showLoading())
