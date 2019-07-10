@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.tab-content {
+  border: 1px solid #dee2e6;
+  border-top: none;
+}
+
+.mainNav {
+  padding-bottom: 5px;
+}
+
+.card-columns {
+  padding: 5px;
+}
+
+.headerImage {
+  height: 34px;
+  width: 34px;
+}
+
+.navbar {
+  margin-bottom: 10px;
+}
+
+.user-select {
+  margin-bottom: 10px;
+}
+
+.welcome-message {
+  padding-right: 5px;
+}
+
+.logout-link {
+  padding-left: 5px;
+}

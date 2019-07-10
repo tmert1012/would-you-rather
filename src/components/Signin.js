@@ -36,7 +36,7 @@ class Signin extends Component {
         }
 
         return (
-            <Card style={{ width: '18rem' }} className="text-center mx-auto">
+            <Card style={{ width: '18rem' }} className="text-center mx-auto" bg="light">
                 <Card.Img variant="top" src="react-redux.png" />
                 <Card.Body>
                     <Card.Title>Would You Rather?</Card.Title>
