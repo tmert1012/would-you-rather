@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, CardDeck } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 class LeaderBoard extends Component {
 
@@ -17,23 +17,26 @@ class LeaderBoard extends Component {
         })).sort((a,b) => {return b.score - a.score})
 
         return (
-            <CardDeck>
+            <div>
                 {sortedUsers.map((user) => (
-                    <Card key={user.id} bg="light" style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>{user.name}</Card.Title>
+                    <div key={user.id}>
+                        <Card bg="light" style={{ width: '18rem' }}>
                             <Card.Body>
-                                <img alt="avatar" src={user.avatarURL} />
-                                <div>Answered Questions: {user.answeredCnt}</div>
-                                <div>Created Questions: {user.questionCnt}</div>
-                                <div>
-                                    Score: {user.score}
-                                </div>
+                                <Card.Title>{user.name}</Card.Title>
+                                <Card.Body>
+                                    <img alt="avatar" src={user.avatarURL} />
+                                    <div>Answered Questions: {user.answeredCnt}</div>
+                                    <div>Created Questions: {user.questionCnt}</div>
+                                    <div>
+                                        Score: {user.score}
+                                    </div>
+                                </Card.Body>
                             </Card.Body>
-                        </Card.Body>
-                    </Card>
+                        </Card>
+                        <br />
+                    </div>
                 ))}
-            </CardDeck>
+            </div>
         )
     }
 

@@ -15,7 +15,7 @@ class NotFound extends Component {
                     <Card.Text>
                         {this.props.location.state.referrer ? this.props.location.state.referrer : this.props.location.pathname}
                     </Card.Text>
-                    <Link to="/home">Return Home</Link>
+                    <Link to="/">Return Home</Link>
                 </Card.Body>
             </Card>
 

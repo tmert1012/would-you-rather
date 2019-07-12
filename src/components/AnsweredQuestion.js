@@ -16,7 +16,7 @@ class AnsweredQuestion extends Component {
         const user = users[question.author]
 
         return (
-            <Card key={id} bg="light" style={{ width: '18rem' }}>
+            <Card key={id} bg="light" style={{ width: '24rem' }} className="answered-question">
                 <Card.Header as="h5">Asked by {user.name}</Card.Header>
                 <Card.Body>
                     <img alt="avatar" src={`../${user.avatarURL}`} />
@@ -26,18 +26,24 @@ class AnsweredQuestion extends Component {
                         <Card.Body>
                             {question.optionOne.text}
                             {question.optionOne.votes.includes(authedUser) && <Badge variant="success">Your Vote</Badge>}
+                            <ProgressBar
+                                now={this.getWholePercent(question.optionOne.votes.length, totalVotes)}
+                                label={`${this.getWholePercent(question.optionOne.votes.length, totalVotes)}%`}
+                            />
+                            <div className="vote-count">{`${question.optionOne.votes.length} of ${totalVotes} votes`}</div>
                         </Card.Body>
-                        <ProgressBar now={this.getWholePercent(question.optionOne.votes.length, totalVotes)} label={`${this.getWholePercent(question.optionOne.votes.length, totalVotes)}%`} />
-                        {`${question.optionOne.votes.length} of ${totalVotes} votes`}
                     </Card>
 
                     <Card>
                         <Card.Body>
                             {question.optionTwo.text}
                             {question.optionTwo.votes.includes(authedUser) && <Badge variant="success">Your Vote</Badge>}
+                            <ProgressBar
+                                now={this.getWholePercent(question.optionTwo.votes.length, totalVotes)}
+                                label={`${this.getWholePercent(question.optionTwo.votes.length, totalVotes)}%`}
+                            />
+                            <div className="vote-count">{`${question.optionTwo.votes.length} of ${totalVotes} votes`}</div>
                         </Card.Body>
-                        <ProgressBar now={this.getWholePercent(question.optionTwo.votes.length, totalVotes)} label={`${this.getWholePercent(question.optionTwo.votes.length, totalVotes)}%`} />
-                        {`${question.optionTwo.votes.length} of ${totalVotes} votes`}
                     </Card>
 
                 </Card.Body>

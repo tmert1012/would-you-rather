@@ -36,11 +36,11 @@ class NewQuestion extends Component {
         const user = users[authedUser]
 
         if (this.state.toHome === true) {
-            return <Redirect to='/home' />
+            return <Redirect to='/' />
         }
 
         return (
-            <Card bg="light" style={{ width: '18rem' }}>
+            <Card bg="light" style={{ width: '24rem' }}>
                 <Card.Header as="h5">{user.name} asks:</Card.Header>
                 <Card.Body>
                     <img alt="avatar" src={user.avatarURL} />

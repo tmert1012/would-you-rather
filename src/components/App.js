@@ -10,6 +10,7 @@ import NewQuestion from "./NewQuestion";
 import {handleInitialUsers} from "../actions/users";
 import Question from "./Question";
 import NotFound from "./NotFound";
+import PrivateRoute from "./PrivateRoute";
 
 class App extends Component {
 
@@ -29,11 +30,11 @@ class App extends Component {
                             <div>
                                 {this.props.authedUser === null ? null : <NavBar />}
                                 <Switch>
-                                    <Route path='/' exact component={Signin} />
-                                    <Route path='/home' exact component={Home} />
-                                    <Route path='/new' exact component={NewQuestion} />
-                                    <Route path='/leaderboard' exact component={LeaderBoard} />
-                                    <Route path="/questions/:id" component={Question}/>
+                                    <Route path='/login' exact component={Signin} />
+                                    <PrivateRoute path='/' exact component={Home} />
+                                    <PrivateRoute path='/add' exact component={NewQuestion} />
+                                    <PrivateRoute path='/leaderboard' exact component={LeaderBoard} />
+                                    <PrivateRoute path="/questions/:id" component={Question}/>
                                     <Route path="/not-found" component={NotFound}/>
                                     <Route component={NotFound}/>
                                 </Switch>

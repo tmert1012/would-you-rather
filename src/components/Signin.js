@@ -7,7 +7,7 @@ import { Card, Button } from 'react-bootstrap'
 class Signin extends Component {
     state = {
         user: "",
-        toHome: false,
+        redirectToReferrer: false
     }
 
     handleChange = (e) => {
@@ -24,15 +24,17 @@ class Signin extends Component {
         this.props.dispatch(setAuthedUser(this.state.user))
 
         this.setState(() => ({
-            toHome: true
+            redirectToReferrer: true
         }))
     }
 
     render() {
         const { users } = this.props
+        const { redirectToReferrer } = this.state
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
 
-        if (this.state.toHome === true) {
-            return <Redirect to='/home' />
+        if (redirectToReferrer === true) {
+            return <Redirect to={from} />
         }
 
         return (

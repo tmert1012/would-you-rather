@@ -34,7 +34,7 @@ class UnansweredQuestion extends Component {
     render() {
 
         if (this.state.toHome === true) {
-            return <Redirect to='/home' />
+            return <Redirect to='/' />
         }
 
         const { id, users, questions } = this.props
@@ -43,7 +43,7 @@ class UnansweredQuestion extends Component {
 
         return (
             <Form onSubmit={this.handleSubmit}>
-                <Card key={id} bg="light" style={{ width: '18rem' }}>
+                <Card key={id} bg="light" style={{ width: '24rem' }}>
                     <Card.Header as="h5">{user.name} asks:</Card.Header>
                     <Card.Body>
                         <img alt="avatar" src={`../${user.avatarURL}`} />
