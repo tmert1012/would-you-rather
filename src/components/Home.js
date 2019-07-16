@@ -2,20 +2,15 @@ import React, { Component } from 'react'
 import {connect} from "react-redux"
 import { Tabs, Tab } from 'react-bootstrap'
 import QuestionList from './QuestionList'
-import {handleInitialQuestions} from "../actions/questions";
 
 class Home extends Component {
-
-    componentDidMount() {
-        this.props.dispatch(handleInitialQuestions())
-    }
 
     compare(a,b) {
         let comparison = 0
         if (a.timestamp > b.timestamp)
-            comparison = 1
-        else if (a.timestamp < b.timestamp)
             comparison = -1
+        else if (a.timestamp < b.timestamp)
+            comparison = 1
         return comparison
     }
 

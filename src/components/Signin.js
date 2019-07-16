@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {setAuthedUser} from "../actions/authedUser";
+import { handleLogin } from "../actions/shared";
 import { Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 
@@ -21,7 +21,7 @@ class Signin extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        this.props.dispatch(setAuthedUser(this.state.user))
+        this.props.dispatch(handleLogin(this.state.user))
 
         this.setState(() => ({
             redirectToReferrer: true

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
-import { handleAnswerQuestion } from "../actions/questions";
+import { handleAnswerQuestion } from "../actions/shared";
 import { Redirect } from 'react-router-dom'
 
 class UnansweredQuestion extends Component {
     state = {
         answer: 'optionOne',
-        toHome: false,
+        qid: '',
     }
 
     handleChange = (e) => {
@@ -27,14 +27,14 @@ class UnansweredQuestion extends Component {
         this.props.dispatch(handleAnswerQuestion({ authedUser, qid: id, answer }))
 
         this.setState(() => ({
-            toHome: true
+            qid: id
         }))
     }
 
     render() {
 
-        if (this.state.toHome === true) {
-            return <Redirect to='/' />
+        if (this.state.qid) {
+            return <Redirect to={`/questions/${this.state.qid}`} />
         }
 
         const { id, users, questions } = this.props
