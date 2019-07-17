@@ -1,5 +1,5 @@
 import { RECEIVE_USERS } from '../actions/users'
-import { ADD_QUESTION, ANSWER_QUESTION } from "../actions/shared"
+import { ADD_QUESTION, ANSWER_QUESTION } from "../actions/questions"
 
 export default function users(state = {}, action) {
 

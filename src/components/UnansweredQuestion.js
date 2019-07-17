@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
-import { handleAnswerQuestion } from "../actions/shared";
+import { handleAnswerQuestion } from "../actions/questions";
 import { Redirect } from 'react-router-dom'
 
 class UnansweredQuestion extends Component {

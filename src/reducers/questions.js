@@ -1,5 +1,4 @@
-import { RECEIVE_QUESTIONS } from '../actions/questions'
-import { ADD_QUESTION, ANSWER_QUESTION } from '../actions/shared'
+import { RECEIVE_QUESTIONS, ADD_QUESTION, ANSWER_QUESTION } from '../actions/questions'
 
 export default function questions(state = {}, action) {
 
@@ -21,7 +20,7 @@ export default function questions(state = {}, action) {
 
     case ANSWER_QUESTION:
         const { authedUser, qid, answer } = action
-        
+
         return {
           ...state,
           [qid]: {
