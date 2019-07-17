@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 import Home from "./Home";
 import LeaderBoard from "./LeaderBoard";
 import NewQuestion from "./NewQuestion";
-import {handleInitialUsers} from "../actions/users";
+import {handleInitialData} from "../actions/shared";
 import Question from "./Question";
 import NotFound from "./NotFound";
 import PrivateRoute from "./PrivateRoute";
@@ -15,7 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 class App extends Component {
 
     componentDidMount() {
-        this.props.dispatch(handleInitialUsers())
+        this.props.dispatch(handleInitialData())
     }
 
     render() {
