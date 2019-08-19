@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { Nav, Navbar, Image } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import {setAuthedUser} from "../actions/authedUser";
+import Avatar from "./Avatar";
 
 
 class NavBar extends Component {
@@ -32,7 +33,7 @@ class NavBar extends Component {
                 </Nav>
                 <div>
                     <span className="welcome-message">Welcome {user.name}</span>
-                    <Image src={user.avatarURL} className='headerImage' roundedCircle />
+                    <Avatar userId={user.id} imageType={'bootstrap'} />
                     <Link
                         className="logout-link"
                         onClick={this.handleLogout}

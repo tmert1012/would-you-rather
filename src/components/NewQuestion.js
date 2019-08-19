@@ -3,6 +3,7 @@ import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
 import {handleAddQuestion} from "../actions/questions"
 import { Redirect } from 'react-router-dom'
+import Avatar from "./Avatar";
 
 class NewQuestion extends Component {
     state = {
@@ -43,7 +44,7 @@ class NewQuestion extends Component {
             <Card bg="light" style={{ width: '24rem' }}>
                 <Card.Header as="h5">{user.name} asks:</Card.Header>
                 <Card.Body>
-                    <img alt="avatar" src={user.avatarURL} />
+                    <Avatar userId={user.id} imageType={'html'} />
                     <Card.Title>Would you rather...</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group controlId="formGroupOption1" onChange={(e) => this.handleOptionChange(e, 'optionOneText')}>

@@ -3,6 +3,7 @@ import { Button, Card, Form } from "react-bootstrap"
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from "../actions/questions";
 import { Redirect } from 'react-router-dom'
+import Avatar from "./Avatar";
 
 class UnansweredQuestion extends Component {
     state = {
@@ -46,7 +47,7 @@ class UnansweredQuestion extends Component {
                 <Card key={id} bg="light" style={{ width: '24rem' }}>
                     <Card.Header as="h5">{user.name} asks:</Card.Header>
                     <Card.Body>
-                        <img alt="avatar" src={`../${user.avatarURL}`} />
+                        <Avatar userId={user.id} imageType={'html'} />
                         <Card.Title>Would you rather...</Card.Title>
                             <Form.Check
                                 type="radio"

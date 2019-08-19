@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card } from "react-bootstrap"
+import Avatar from './Avatar'
 
 class LeaderBoard extends Component {
 
@@ -24,7 +25,7 @@ class LeaderBoard extends Component {
                             <Card.Body>
                                 <Card.Title>{user.name}</Card.Title>
                                 <Card.Body>
-                                    <img alt="avatar" src={user.avatarURL} />
+                                    <Avatar userId={user.id} imageType={'html'} />
                                     <div>Answered Questions: {user.answeredCnt}</div>
                                     <div>Created Questions: {user.questionCnt}</div>
                                     <div>

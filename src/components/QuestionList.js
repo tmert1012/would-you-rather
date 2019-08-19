@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Avatar from "./Avatar";
 
 
 class QuestionList extends Component {
@@ -22,7 +23,7 @@ class QuestionList extends Component {
                         <Card bg="light" style={{ width: '18rem' }}>
                             <Card.Header as="h5">{users[question.author].name} asks:</Card.Header>
                             <Card.Body>
-                                <img alt="avatar" src={users[question.author].avatarURL} />
+                                <Avatar userId={users[question.author].id} imageType={'html'} />
                                 <Card.Title>Would you rather...</Card.Title>
                                 <Card.Text>
                                     {question.optionOne.text} or ...

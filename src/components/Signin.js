@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleLogin } from "../actions/shared";
 import { Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
+import ReduxImage from '../icons/react-redux.png'
 
 class Signin extends Component {
     state = {
@@ -39,7 +40,7 @@ class Signin extends Component {
 
         return (
             <Card style={{ width: '18rem' }} className="text-center mx-auto" bg="light">
-                <Card.Img variant="top" src="react-redux.png" />
+                <Card.Img variant="top" src={ReduxImage} />
                 <Card.Body>
                     <Card.Title>Would You Rather?</Card.Title>
                     <Card.Text>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, ProgressBar, Badge } from "react-bootstrap"
 import { connect } from 'react-redux'
+import Avatar from './Avatar'
 
 class AnsweredQuestion extends Component {
 
@@ -19,7 +20,7 @@ class AnsweredQuestion extends Component {
             <Card key={id} bg="light" style={{ width: '24rem' }} className="answered-question">
                 <Card.Header as="h5">Asked by {user.name}</Card.Header>
                 <Card.Body>
-                    <img alt="avatar" src={`../${user.avatarURL}`} />
+                    <Avatar userId={user.id} imageType={'html'} />
                     <Card.Title>Would you rather...</Card.Title>
 
                     <Card>
