@@ -1,5 +1,6 @@
 {
   "name": "would-you-rather",
+  "homepage" : "http://web1.apuno.io/would-you-rather",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
